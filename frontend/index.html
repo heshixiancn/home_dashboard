@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      html,
+      body,
+      #app {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      .boot-screen {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #f6fbfd;
+      }
+
+      .boot-dot {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #28a394, #4c8cdc);
+        box-shadow: 0 14px 32px rgba(47, 129, 160, .22);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="boot-screen" aria-label="Loading">
+        <div class="boot-dot"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+services:
+  home-dashboard:
+    image: ghcr.io/<github用户名>/home-service-dashboard:latest
+    container_name: home-service-dashboard
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      TZ: Asia/Shanghai
+      DB_HOST: mysql8
+      DB_PORT: 3306
+      DB_NAME: home_dashboard
+      DB_USER: home_dashboard
+      DB_PASSWORD: ${DB_PASSWORD}
+      CHECK_INTERVAL_SECONDS: 60
+      CACHE_TTL_SECONDS: 30
+    networks:
+      - mysql-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+networks:
+  mysql-network:
+    external: true
+    name: mysql-network
+
